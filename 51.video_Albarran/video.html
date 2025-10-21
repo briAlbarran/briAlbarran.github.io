@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Link to the external CSS file named "styles.css" -->
+  <link rel="stylesheet" href="styles.css" />
+  <title>Fullscreen Video with Quote</title>
+</head>
+<body>
+  <!-- 
+    The <video> element occupies the full viewport via CSS.
+    Attributes:
+      autoplay - start playback automatically (may be blocked unless muted)
+      muted - required by many browsers to allow autoplay
+      loop - restart when finished
+      playsinline - helps mobile browsers play inline
+      controls - optional; remove if you want no controls visible
+  -->
+  <video autoplay loop muted class="background-video">
+    <!-- Update the filename below to match the file in your videos/ folder -->
+    <source src="videos/hedgehogs_compressed_10sec.mp4" type="video/mp4" />
+    <!-- Fallback text shown if the browser doesn't support HTML5 video -->
+    Your browser does not support the video tag.
+  </video>
+
+  <!--
+    Caption / text box placed at the bottom of the screen.
+    Contains an Undertale quote (replace if you want a different line).
+  -->
+  <div class="quote-container" role="note" aria-live="polite">
+    <!-- Quote text -->
+    <p class="quote">"It's a beautiful day outside. Birds are singing, flowers are blooming... On days like these, kids like you—should be burning in hell. - Flowey (Toby Fox)"</p>
+  </div>
+
+  <!-- Small script to ensure video keeps playing if needed and improve accessibility -->
+  <script>
+    // Try to play the video programmatically (some browsers require user interaction).
+    // This is a best-effort; it will silently fail if the browser blocks playback.
+    (function(){
+      const v = document.getElementById('bg-video');
+      if (v && v.paused) {
+        // Attempt to play; browsers may deny without user gesture.
+        v.play().catch(()=>{/* autoplay blocked — do nothing */});
+      }
+    })();
+  </script>
+</body>
+</html>
+

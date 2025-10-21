@@ -1,0 +1,104 @@
+/* styles.css */
+
+/* Reset body margins so the video truly fills the viewport */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+  Make sure the page background doesn't show if the video is still loading.
+  Use black as a neutral background.
+*/
+body {
+  background: #000;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* 
+  Fullscreen video styling:
+  - position: fixed to stay anchored to the viewport
+  - inset: 0 shorthand for top/right/bottom/left: 0 (fills viewport)
+  - object-fit: cover to crop the video proportionally and cover the entire area
+  - z-index: -1 places the video behind the overlay quote box
+*/
+.background-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  /* Improve rendering on some browsers */
+  will-change: transform;
+}
+
+/* 
+  Quote container sits near the bottom and is centered horizontally.
+  - position: fixed so it always stays in view
+  - left: 50% with transform to center it
+  - bottom: small distance from viewport bottom
+  - width / max-width to keep it readable on large screens
+*/
+.quote-container {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  width: calc(100% - 40px); /* allow some side padding on narrow screens */
+  max-width: 900px;
+  z-index: 10; /* above the video */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* allows clicks to pass through to controls if desired */
+}
+
+/* 
+  The actual text box styling:
+  - bright yellow background
+  - black bold text
+  - comfortable padding and rounded corners
+  - slightly translucent so background video reads through a tiny bit (optional)
+  - pointer-events restored to auto for the inner box if you want selection/interaction
+*/
+.quote {
+  /* Visual style */
+  background: #FFD800;        /* yellow background */
+  color: #000;                /* black text */
+  font-weight: 800;          /* bold text */
+  margin: 0;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+
+  /* Layout */
+  max-width: 100%;
+  font-size: 1rem;
+  line-height: 1.25;
+  text-align: center;
+
+  /* Accessibility / interaction */
+  pointer-events: auto; /* allow selection if user wants to copy the quote */
+
+  /* Make sure long quotes wrap nicely */
+  word-wrap: break-word;
+}
+
+/* Slightly increase font size on larger screens for readability */
+@media (min-width: 768px) {
+  .quote {
+    font-size: 1.125rem;
+    padding: 16px 26px;
+  }
+}
+
+/* Very large screens — scale up a bit more */
+@media (min-width: 1400px) {
+  .quote {
+    font-size: 1.25rem;
+    padding: 18px 32px;
+  }
+}
+
