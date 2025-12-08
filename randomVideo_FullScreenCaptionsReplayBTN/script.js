@@ -15,7 +15,7 @@ const videoPart2 = [
 
 const videoPart3 = [
 		{ src: "videos/video09.mp4",      caption: "Readers, like gamers, use books to escape the real world. They enter the book often as the main character." },
-		{ src: "videos/video10.mp4",      caption: "Writing is a way to create whole words and scenarios, as well as the characters will populate those worlds." },
+		{ src: "videos/video10.mp4",      caption: "Writing is a way to create whole worlds and scenarios, as well as the characters that will populate those worlds." },
 		{ src: "videos/video11.mp4",      caption: "DnD allows each person to play and create a story together. This real-time scenario building is very exciting." },
 		{ src: "videos/video12.mp4", 	  caption: "Drawing is another way to be creative, and a way to visualize characters and bring them to life." }
 	];
